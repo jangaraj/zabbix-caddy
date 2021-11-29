@@ -1,0 +1,22 @@
+{
+    # email to use on Let's Encrypt
+    email jan.garaj@gmail.com
+
+    # Uncomment for debug
+    #acme_ca https://acme-staging-v02.api.letsencrypt.org/directory
+    #debug
+}
+
+# domain name from the env variable
+{$DOMAIN}
+
+header {
+    # HSTS
+    Strict-Transport-Security max-age=31536000;
+    # Hide server header field
+    -Server
+}
+
+encode gzip
+
+reverse_proxy zabbix-web:8080
